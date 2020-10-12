@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ludolicious!</title>
+	<link rel="stylesheet" href="stylesheets/splash.css">
+	<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+	<script type="text/javascript" src="javascripts/splash.js"></script>
+</head>
+<body onload="doCookie()">
+	<header>
+		<h1>Ludolicious!</h1>
+	</header>
+
+	<main>
+		<button class="button"><a href="./game">Play Game</a></button>
+		<button class="button" id="button1">How to play</button>
+			<div id="howToPlay" class="howToPlay">
+			  <div class="howToPlayText">
+			    <span class="close">&times;</span>
+			    <p>The main goal of this game is to get the four pawns of your color in their end zones.
+				Upon throwing six, you can move a pawn from home to start and throw again. You may now move your pawn the amount of eyes you threw.
+				If you move to a square which already has a pawn on it, that pawn has to move to home again. 
+
+				Controls: 
+				Click the button "Roll the die" when it's your turn to roll the die.
+				Click on the pawn you want to move. If the move is invalid, the pawn won't move.</p>
+			  </div>
+		</div>
+
+		<button class="button" id="button2">Credits</button>
+		<div id="credits" class="credits">
+			<div class="creditsText">
+			<span class="close2">&times;</span>
+			<p>Made by Sebastien van Tiggele and Merel Steenbergen</p>
+		</div>
+		</div>
+
+		<img class="splashpicture" id="pic1" src="images/splash.png">
+		<img class="splashpicture" id="pic2" src="images/splash.png">
+		<img class="splashpicture" id="pic3" src="images/splash.png">
+		<img class="splashpicture" id="pic4" src="images/splash.png">
+		<img class="splashpicture" id="pic5" src="images/splash.png">
+		<img class="splashpicture" id="pic6" src="images/splash.png">
+		<img class="splashpicture" id="pic7" src="images/splash.png">
+		<img class="splashpicture" id="pic8" src="images/splash.png">
+	</main>
+
+	<footer>
+		<ul>
+			<h3><%= gamesInitialized %> 
+                    <%if (gamesInitialized != 1) { %>
+                        games
+                    <% } else { %>
+                        game
+                    <% } %>
+                    initialized, 
+                    <%= gamesCompleted %> 
+                    completed
+                </h3>
+		</ul>
+		<ul>
+			You have played this game <span id="times"></span> times before.
+		</ul>
+		</ul>
+	</footer>
+</body> 
+</html>

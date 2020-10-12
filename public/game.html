@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Lucolicious!</title>
+	<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+	<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+	<script src="javascripts/client.js"></script>
+</head>
+
+<body>
+	<section>
+		<p id="timer">Time: 00:00</p>
+		<p id="wait">Waiting for more players to join the game</p>
+	</section>
+
+	<section>
+		<link href="stylesheets/die.css" rel="stylesheet" type="text/css">
+		<p>The current player is:
+			<span id="currPlayer">Red</span>
+		</p>
+		<p class="winneris">The winner is:
+			<span id="winner"></span>
+		</p>
+	</section>
+
+	<section class="dice">
+		<link href="stylesheets/die.css" rel="stylesheet" type="text/css">
+		<!-- <img src="idk"> -->
+		<div id="die" class="die"></div>
+		<img class="picture" id="picture" src="images/side1.png">
+		<button id="rollDice">Roll the die</button>
+		<!-- <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+		<script src="javascripts/game.js"></script> -->
+		<audio id="diceAudio" controls>
+			<source src="images/diceSound.mp3" type="audio/mpeg"> Your browser does not support the audio element.
+		</audio>
+	</section>
+
+	<section class="settings">
+		<button class="button">
+			<a href="./">Quit Game</a>
+		</button>
+		<button class="button" id="button1">How to play</button>
+		<div id="howToPlay" class="howToPlay">
+			<div class="howToPlayText">
+				<span class="close">&times;</span>
+				<p>The main goal of this game is to get the four pawns of your color in their end zones. Upon throwing six, you can move
+					a pawn from home to start and throw again. You may now move your pawn the amount of eyes you threw. If you move to a
+					square which already has a pawn on it, that pawn has to move to home again. Controls: Click the button "Roll the die"
+					when it's your turn to roll the die. Click on the pawn you want to move. If the move is invalid, the pawn won't move.</p>
+			</div>
+		</div>
+
+		<button class="button" id="button2">Credits</button>
+		<div id="credits" class="credits">
+			<div class="creditsText">
+				<span class="close2">&times;</span>
+				<p>Made by Sebastien van Tiggele and Merel Steenbergen</p>
+			</div>
+		</div>
+		<button class="button" id="fs" onclick="toggleFullScreen()">Full Screen mode</button>
+	</section>
+
+	<section class="board">
+		<div id="p0" class="red-pawn"></div>
+		<div id="p1" class="red-pawn"></div>
+		<div id="p2" class="red-pawn"></div>
+		<div id="p3" class="red-pawn"></div>
+
+		<div id="p4" class="yellow-pawn"></div>
+		<div id="p5" class="yellow-pawn"></div>
+		<div id="p6" class="yellow-pawn"></div>
+		<div id="p7" class="yellow-pawn"></div>
+
+		<div id="p8" class="blue-pawn"></div>
+		<div id="p9" class="blue-pawn"></div>
+		<div id="p10" class="blue-pawn"></div>
+		<div id="p11" class="blue-pawn"></div>
+
+		<div id="p12" class="green-pawn"></div>
+		<div id="p13" class="green-pawn"></div>
+		<div id="p14" class="green-pawn"></div>
+		<div id="p15" class="green-pawn"></div>
+
+		<div id="s0" class="red-starting-square"></div>
+		<div id="s1" class="square"></div>
+		<div id="s2" class="square"></div>
+		<div id="s3" class="square"></div>
+		<div id="s4" class="square"></div>
+		<div id="s5" class="square"></div>
+		<div id="s6" class="square"></div>
+		<div id="s7" class="square"></div>
+		<div id="s8" class="square"></div>
+		<div id="s9" class="square"></div>
+
+		<div id="s10" class="yellow starting square"></div>
+		<div id="s11" class="square"></div>
+		<div id="s12" class="square"></div>
+		<div id="s13" class="square"></div>
+		<div id="s14" class="square"></div>
+		<div id="s15" class="square"></div>
+		<div id="s16" class="square"></div>
+		<div id="s17" class="square"></div>
+		<div id="s18" class="square"></div>
+		<div id="s19" class="square"></div>
+
+		<div id="s20" class="blue-starting-square"></div>
+		<div id="s21" class="square"></div>
+		<div id="s22" class="square"></div>
+		<div id="s23" class="square"></div>
+		<div id="s24" class="square"></div>
+		<div id="s25" class="square"></div>
+		<div id="s26" class="square"></div>
+		<div id="s27" class="square"></div>
+		<div id="s28" class="square"></div>
+		<div id="s29" class="square"></div>
+
+		<div id="s30" class="green-starting-square"></div>
+		<div id="s31" class="square"></div>
+		<div id="s32" class="square"></div>
+		<div id="s33" class="square"></div>
+		<div id="s34" class="square"></div>
+		<div id="s35" class="square"></div>
+		<div id="s36" class="square"></div>
+		<div id="s37" class="square"></div>
+		<div id="s38" class="square"></div>
+		<div id="s39" class="square"></div>
+
+		<div id="s40" class="red-endsquare"></div>
+		<div id="s41" class="red-endsquare"></div>
+		<div id="s42" class="red-endsquare"></div>
+		<div id="s43" class="red-endsquare"></div>
+
+		<div id="s44" class="red-homesquare"></div>
+		<div id="s45" class="red-homesquare"></div>
+		<div id="s46" class="red-homesquare"></div>
+		<div id="s47" class="red-homesquare"></div>
+
+		<div id="s50" class="yellow-endsquare"></div>
+		<div id="s51" class="yellow-endsquare"></div>
+		<div id="s52" class="yellow-endsquare"></div>
+		<div id="s53" class="yellow-endsquare"></div>
+
+		<div id="s54" class="yellow-homesquare"></div>
+		<div id="s55" class="yellow-homesquare"></div>
+		<div id="s56" class="yellow-homesquare"></div>
+		<div id="s57" class="yellow-homesquare"></div>
+
+		<div id="s60" class="blue-endsquare"></div>
+		<div id="s61" class="blue-endsquare"></div>
+		<div id="s62" class="blue-endsquare"></div>
+		<div id="s63" class="blue-endsquare"></div>
+
+		<div id="s64" class="blue-homesquare"></div>
+		<div id="s65" class="blue-homesquare"></div>
+		<div id="s66" class="blue-homesquare"></div>
+		<div id="s67" class="blue-homesquare"></div>
+
+		<div id="s70" class="green-endsquare"></div>
+		<div id="s71" class="green-endsquare"></div>
+		<div id="s72" class="green-endsquare"></div>
+		<div id="s73" class="green-endsquare"></div>
+
+		<div id="s74" class="green-homesquare"></div>
+		<div id="s75" class="green-homesquare"></div>
+		<div id="s76" class="green-homesquare"></div>
+		<div id="s77" class="green-homesquare"></div>
+	</section>
+
+
+
+</body>
+
+</html>
